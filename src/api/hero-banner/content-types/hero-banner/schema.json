@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_banners",
+  "info": {
+    "singularName": "hero-banner",
+    "pluralName": "hero-banners",
+    "displayName": "Hero Banner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroEyebrow": {
+      "type": "string"
+    },
+    "brideName": {
+      "type": "string"
+    },
+    "groomName": {
+      "type": "string"
+    },
+    "weddingDate": {
+      "type": "string"
+    },
+    "venueNameShort": {
+      "type": "string"
+    },
+    "venueLocationShort": {
+      "type": "string"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

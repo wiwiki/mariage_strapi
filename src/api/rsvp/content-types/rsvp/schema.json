@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "rsvps",
+  "info": {
+    "singularName": "rsvp",
+    "pluralName": "rsvps",
+    "displayName": "RSVP",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rsvpEyebrow": {
+      "type": "string"
+    },
+    "rsvpTitle": {
+      "type": "text"
+    },
+    "rsvpDeadlineText": {
+      "type": "string"
+    },
+    "rsvpButtonLabel": {
+      "type": "string"
+    },
+    "rsvpDateLine": {
+      "type": "string"
+    }
+  }
+}
