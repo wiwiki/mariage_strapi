@@ -35,7 +35,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     const code = String(ctx.request.body?.code ?? '').trim();
     const guestAnswers = Array.isArray(ctx.request.body?.guests) ? ctx.request.body.guests : [];
     const messageToCouple =
-      typeof ctx.request.body?.messageToCouple === 'string' ? ctx.request.body.messageToCouple : undefined;
+      typeof ctx.request.body?.message === 'string' ? ctx.request.body.message : undefined;
 
     const invitation = CODE_PATTERN.test(code)
       ? await strapi.db.query('api::invitation.invitation').findOne({
