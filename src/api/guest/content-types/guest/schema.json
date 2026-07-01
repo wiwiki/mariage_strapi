@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guests",
+  "info": {
+    "singularName": "guest",
+    "pluralName": "guests",
+    "displayName": "Guest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "isChild": {
+      "type": "boolean",
+      "default": false
+    },
+    "isOpenSlot": {
+      "type": "boolean",
+      "default": false
+    },
+    "attending": {
+      "type": "boolean",
+      "default": false
+    },
+    "mealChoice": {
+      "type": "enumeration",
+      "enum": ["standard", "vegetarian", "vegan", "allergie"]
+    },
+    "allergies": {
+      "type": "text"
+    },
+    "invitation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::invitation.invitation",
+      "inversedBy": "guests"
+    }
+  }
+}
