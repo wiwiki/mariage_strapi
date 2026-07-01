@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invitations",
+  "info": {
+    "singularName": "invitation",
+    "pluralName": "invitations",
+    "displayName": "Invitation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "householdName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "declined"],
+      "default": "pending",
+      "required": true
+    },
+    "confirmedGuestCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "respondedAt": {
+      "type": "datetime"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["fr", "en", "it"],
+      "default": "fr"
+    },
+    "allowPlusOne": {
+      "type": "boolean",
+      "default": false
+    },
+    "maxGuests": {
+      "type": "integer"
+    },
+    "messageToCouple": {
+      "type": "text"
+    },
+    "guests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guest.guest",
+      "mappedBy": "invitation"
+    }
+  }
+}
