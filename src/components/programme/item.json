@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_programme_items",
+  "info": {
+    "displayName": "Programme Item",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
