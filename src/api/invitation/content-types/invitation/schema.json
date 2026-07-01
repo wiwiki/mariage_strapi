@@ -20,7 +20,7 @@
     "householdName": {
       "type": "string"
     },
-    "status": {
+    "rsvpStatus": {
       "type": "enumeration",
       "enum": ["pending", "confirmed", "declined"],
       "default": "pending",

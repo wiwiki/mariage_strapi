@@ -50,7 +50,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       return;
     }
 
-    if (invitation.status !== 'pending') {
+    if (invitation.rsvpStatus !== 'pending') {
       ctx.status = 409;
       ctx.body = { error: 'already_responded' };
       return;
@@ -91,12 +91,12 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     });
 
     const confirmedGuestCount = refreshedGuests.filter((guest: any) => guest.attending).length;
-    const status = confirmedGuestCount > 0 ? 'confirmed' : 'declined';
+    const rsvpStatus = confirmedGuestCount > 0 ? 'confirmed' : 'declined';
 
     await strapi.db.query('api::invitation.invitation').update({
       where: { id: invitation.id },
       data: {
-        status,
+        rsvpStatus,
         confirmedGuestCount,
         respondedAt: new Date(),
         ...(messageToCouple !== undefined ? { messageToCouple } : {}),

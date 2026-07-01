@@ -578,7 +578,9 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     messageToCouple: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     respondedAt: Schema.Attribute.DateTime;
-    status: Schema.Attribute.Enumeration<['pending', 'confirmed', 'declined']> &
+    rsvpStatus: Schema.Attribute.Enumeration<
+      ['pending', 'confirmed', 'declined']
+    > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'pending'>;
     updatedAt: Schema.Attribute.DateTime;
