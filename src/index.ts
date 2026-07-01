@@ -23,16 +23,27 @@ export default {
 
     if (!publicRole) return;
 
-    const action = 'api::wedding-page.wedding-page.find';
+    const contentTypes = [
+      'api::hero-banner.hero-banner',
+      'api::story.story',
+      'api::programme.programme',
+      'api::venue.venue',
+      'api::rsvp.rsvp',
+      'api::footer.footer',
+    ];
 
-    const existingPermission = await strapi
-      .query('plugin::users-permissions.permission')
-      .findOne({ where: { role: publicRole.id, action } });
+    for (const contentType of contentTypes) {
+      const action = `${contentType}.find`;
 
-    if (!existingPermission) {
-      await strapi
+      const existingPermission = await strapi
         .query('plugin::users-permissions.permission')
-        .create({ data: { action, role: publicRole.id } });
+        .findOne({ where: { role: publicRole.id, action } });
+
+      if (!existingPermission) {
+        await strapi
+          .query('plugin::users-permissions.permission')
+          .create({ data: { action, role: publicRole.id } });
+      }
     }
   },
 };

@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "stories",
+  "info": {
+    "singularName": "story",
+    "pluralName": "stories",
+    "displayName": "Histoire",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "storyEyebrow": {
+      "type": "string"
+    },
+    "storyScript": {
+      "type": "text"
+    },
+    "storyLede": {
+      "type": "text"
+    }
+  }
+}

@@ -440,13 +440,167 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiWeddingPageWeddingPage extends Struct.SingleTypeSchema {
-  collectionName: 'wedding_pages';
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
   info: {
     description: '';
-    displayName: 'Wedding Page';
-    pluralName: 'wedding-pages';
-    singularName: 'wedding-page';
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footerScript: Schema.Attribute.String;
+    footerTagline: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHeroBannerHeroBanner extends Struct.SingleTypeSchema {
+  collectionName: 'hero_banners';
+  info: {
+    description: '';
+    displayName: 'Hero Banner';
+    pluralName: 'hero-banners';
+    singularName: 'hero-banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brideName: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    groomName: Schema.Attribute.String;
+    heroEyebrow: Schema.Attribute.String;
+    heroImage: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-banner.hero-banner'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venueLocationShort: Schema.Attribute.String;
+    venueNameShort: Schema.Attribute.String;
+    weddingDate: Schema.Attribute.String;
+  };
+}
+
+export interface ApiProgrammeProgramme extends Struct.SingleTypeSchema {
+  collectionName: 'programmes';
+  info: {
+    description: '';
+    displayName: 'Programme';
+    pluralName: 'programmes';
+    singularName: 'programme';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::programme.programme'
+    > &
+      Schema.Attribute.Private;
+    programmeEyebrow: Schema.Attribute.String;
+    programmeItems: Schema.Attribute.Component<'programme.item', true>;
+    programmeTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRsvpRsvp extends Struct.SingleTypeSchema {
+  collectionName: 'rsvps';
+  info: {
+    description: '';
+    displayName: 'RSVP';
+    pluralName: 'rsvps';
+    singularName: 'rsvp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::rsvp.rsvp'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    rsvpButtonLabel: Schema.Attribute.String;
+    rsvpDateLine: Schema.Attribute.String;
+    rsvpDeadlineText: Schema.Attribute.String;
+    rsvpEyebrow: Schema.Attribute.String;
+    rsvpTitle: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStoryStory extends Struct.SingleTypeSchema {
+  collectionName: 'stories';
+  info: {
+    description: '';
+    displayName: 'Histoire';
+    pluralName: 'stories';
+    singularName: 'story';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::story.story'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    storyEyebrow: Schema.Attribute.String;
+    storyLede: Schema.Attribute.Text;
+    storyScript: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVenueVenue extends Struct.SingleTypeSchema {
+  collectionName: 'venues';
+  info: {
+    description: '';
+    displayName: 'Lieu';
+    pluralName: 'venues';
+    singularName: 'venue';
   };
   options: {
     draftAndPublish: true;
@@ -454,37 +608,17 @@ export interface ApiWeddingPageWeddingPage extends Struct.SingleTypeSchema {
   attributes: {
     accommodationLabel: Schema.Attribute.String;
     accommodationText: Schema.Attribute.Text;
-    brideName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    footerScript: Schema.Attribute.String;
-    footerTagline: Schema.Attribute.String;
-    groomName: Schema.Attribute.String;
-    heroEyebrow: Schema.Attribute.String;
-    heroImage: Schema.Attribute.Media<'images'>;
     howToReachLabel: Schema.Attribute.String;
     howToReachText: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::wedding-page.wedding-page'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::venue.venue'> &
       Schema.Attribute.Private;
     mapLinkLabel: Schema.Attribute.String;
     mapUrl: Schema.Attribute.String;
-    programmeEyebrow: Schema.Attribute.String;
-    programmeItems: Schema.Attribute.Component<'programme.item', true>;
-    programmeTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    rsvpButtonLabel: Schema.Attribute.String;
-    rsvpDateLine: Schema.Attribute.String;
-    rsvpDeadlineText: Schema.Attribute.String;
-    rsvpEyebrow: Schema.Attribute.String;
-    rsvpTitle: Schema.Attribute.Text;
-    storyEyebrow: Schema.Attribute.String;
-    storyLede: Schema.Attribute.Text;
-    storyScript: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -493,13 +627,10 @@ export interface ApiWeddingPageWeddingPage extends Struct.SingleTypeSchema {
     venueContactText: Schema.Attribute.Text;
     venueEyebrow: Schema.Attribute.String;
     venueLede: Schema.Attribute.Text;
-    venueLocationShort: Schema.Attribute.String;
     venueName: Schema.Attribute.String;
-    venueNameShort: Schema.Attribute.String;
     venuePhoto: Schema.Attribute.Media<'images'>;
     venuePhotoAlt: Schema.Attribute.String;
     venueTitle: Schema.Attribute.String;
-    weddingDate: Schema.Attribute.String;
   };
 }
 
@@ -1014,7 +1145,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::wedding-page.wedding-page': ApiWeddingPageWeddingPage;
+      'api::footer.footer': ApiFooterFooter;
+      'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
+      'api::programme.programme': ApiProgrammeProgramme;
+      'api::rsvp.rsvp': ApiRsvpRsvp;
+      'api::story.story': ApiStoryStory;
+      'api::venue.venue': ApiVenueVenue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

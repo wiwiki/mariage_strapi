@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "programmes",
+  "info": {
+    "singularName": "programme",
+    "pluralName": "programmes",
+    "displayName": "Programme",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "programmeEyebrow": {
+      "type": "string"
+    },
+    "programmeTitle": {
+      "type": "string"
+    },
+    "programmeItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "programme.item"
+    }
+  }
+}
