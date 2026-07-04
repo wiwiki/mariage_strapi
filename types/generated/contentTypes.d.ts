@@ -485,10 +485,21 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     code: Schema.Attribute.String & Schema.Attribute.Unique;
     confirmedAdultCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
+    confirmedAllergieCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
     confirmedBabyCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     confirmedChildCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
+    confirmedGlutenFreeCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    confirmedStandardCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    confirmedVeganCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    confirmedVegetarianCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    contactEmail: Schema.Attribute.Email & Schema.Attribute.Private;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

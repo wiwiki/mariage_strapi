@@ -1,7 +1,17 @@
 import type { Core } from '@strapi/strapi';
 
 const CODE_PATTERN = /^[A-Z0-9]{6}$/;
-const MEAL_CHOICES = ['standard', 'vegetarian', 'vegan', 'allergie'];
+// Single source of truth: each meal choice and the Invitation field its
+// attending-count lands in. Keep in sync with the mealChoice enum in
+// src/components/rsvp/guest.json.
+const MEAL_TYPES = [
+  { value: 'standard', countField: 'confirmedStandardCount' },
+  { value: 'vegetarian', countField: 'confirmedVegetarianCount' },
+  { value: 'vegan', countField: 'confirmedVeganCount' },
+  { value: 'allergie', countField: 'confirmedAllergieCount' },
+  { value: 'glutenFree', countField: 'confirmedGlutenFreeCount' },
+] as const;
+const MEAL_CHOICES = MEAL_TYPES.map((meal) => meal.value);
 const AGE_GROUPS = ['adult', 'child', 'baby'];
 const MAX_GUESTS = 10;
 
@@ -74,6 +84,13 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
 
     const attendees = guests.filter((guest) => guest.attending);
 
+    const mealCounts = Object.fromEntries(
+      MEAL_TYPES.map(({ value, countField }) => [
+        countField,
+        attendees.filter((guest) => guest.mealChoice === value).length,
+      ])
+    );
+
     await strapi.documents(INVITATION_UID).update({
       documentId: invitation.documentId,
       data: {
@@ -82,6 +99,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
         confirmedAdultCount: attendees.filter((guest) => guest.ageGroup === 'adult').length,
         confirmedChildCount: attendees.filter((guest) => guest.ageGroup === 'child').length,
         confirmedBabyCount: attendees.filter((guest) => guest.ageGroup === 'baby').length,
+        ...mealCounts,
         respondedAt: new Date().toISOString(),
         ...(messageToCouple !== undefined ? { messageToCouple } : {}),
       } as any,

@@ -18,15 +18,25 @@
     },
     "mealChoice": {
       "type": "enumeration",
-      "enum": ["standard", "vegetarian", "vegan", "allergie"]
+      "enum": [
+        "standard",
+        "vegetarian",
+        "vegan",
+        "allergie",
+        "glutenFree"
+      ]
     },
     "allergies": {
       "type": "text"
     },
     "ageGroup": {
       "type": "enumeration",
-      "enum": ["adult", "child", "baby"],
-      "default": "adult"
+      "default": "adult",
+      "enum": [
+        "adult",
+        "child",
+        "baby"
+      ]
     }
   }
 }

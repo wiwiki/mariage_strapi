@@ -12,12 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "code": {
-      "type": "string",
-      "unique": true
-    },
-    "inviteLink": {
-      "type": "string"
+    "contactEmail": {
+      "type": "email",
+      "private": true
     },
     "householdName": {
       "type": "string"
@@ -25,17 +22,34 @@
     "maxGuests": {
       "type": "integer"
     },
+    "guests": {
+      "type": "component",
+      "component": "rsvp.guest",
+      "repeatable": true,
+      "max": 10
+    },
+    "messageToCouple": {
+      "type": "text"
+    },
     "rsvpStatus": {
       "type": "enumeration",
-      "enum": ["pending", "confirmed", "declined"],
+      "required": true,
       "default": "pending",
-      "required": true
+      "enum": [
+        "pending",
+        "confirmed",
+        "declined"
+      ]
     },
     "respondedAt": {
       "type": "datetime"
     },
-    "messageToCouple": {
-      "type": "text"
+    "code": {
+      "type": "string",
+      "unique": true
+    },
+    "inviteLink": {
+      "type": "string"
     },
     "confirmedAdultCount": {
       "type": "integer",
@@ -49,11 +63,25 @@
       "type": "integer",
       "default": 0
     },
-    "guests": {
-      "type": "component",
-      "repeatable": true,
-      "component": "rsvp.guest",
-      "max": 10
+    "confirmedStandardCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedVegetarianCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedVeganCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedAllergieCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedGlutenFreeCount": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
