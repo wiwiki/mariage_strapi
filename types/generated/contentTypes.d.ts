@@ -508,41 +508,6 @@ export interface ApiGuestGuest extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiHeroBannerHeroBanner extends Struct.SingleTypeSchema {
-  collectionName: 'hero_banners';
-  info: {
-    description: '';
-    displayName: 'Hero Banner';
-    pluralName: 'hero-banners';
-    singularName: 'hero-banner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    brideName: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    groomName: Schema.Attribute.String;
-    heroEyebrow: Schema.Attribute.String;
-    heroImage: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hero-banner.hero-banner'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    venueLocationShort: Schema.Attribute.String;
-    venueNameShort: Schema.Attribute.String;
-    weddingDate: Schema.Attribute.String;
-  };
-}
-
 export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
   collectionName: 'invitations';
   info: {
@@ -1231,7 +1196,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::footer.footer': ApiFooterFooter;
       'api::guest.guest': ApiGuestGuest;
-      'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
       'api::invitation.invitation': ApiInvitationInvitation;
       'api::programme.programme': ApiProgrammeProgramme;
       'api::rsvp.rsvp': ApiRsvpRsvp;
