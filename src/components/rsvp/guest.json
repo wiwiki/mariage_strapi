@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_rsvp_guests",
+  "info": {
+    "displayName": "Guest",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "attending": {
+      "type": "boolean",
+      "default": false
+    },
+    "mealChoice": {
+      "type": "enumeration",
+      "enum": ["standard", "vegetarian", "vegan", "allergie"]
+    },
+    "allergies": {
+      "type": "text"
+    },
+    "ageGroup": {
+      "type": "enumeration",
+      "enum": ["adult", "child", "baby"],
+      "default": "adult"
+    }
+  }
+}
