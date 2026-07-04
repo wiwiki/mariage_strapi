@@ -24,7 +24,6 @@ export default {
     if (!publicRole) return;
 
     const contentTypes = [
-      'api::hero-banner.hero-banner',
       'api::story.story',
       'api::programme.programme',
       'api::venue.venue',

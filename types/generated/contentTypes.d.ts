@@ -470,79 +470,6 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiGuestGuest extends Struct.CollectionTypeSchema {
-  collectionName: 'guests';
-  info: {
-    description: '';
-    displayName: 'Guest';
-    pluralName: 'guests';
-    singularName: 'guest';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    allergies: Schema.Attribute.Text;
-    attending: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    firstName: Schema.Attribute.String;
-    invitation: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::invitation.invitation'
-    >;
-    isChild: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    isOpenSlot: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    lastName: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'> &
-      Schema.Attribute.Private;
-    mealChoice: Schema.Attribute.Enumeration<
-      ['standard', 'vegetarian', 'vegan', 'allergie']
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiHeroBannerHeroBanner extends Struct.SingleTypeSchema {
-  collectionName: 'hero_banners';
-  info: {
-    description: '';
-    displayName: 'Hero Banner';
-    pluralName: 'hero-banners';
-    singularName: 'hero-banner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    brideName: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    groomName: Schema.Attribute.String;
-    heroEyebrow: Schema.Attribute.String;
-    heroImage: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hero-banner.hero-banner'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    venueLocationShort: Schema.Attribute.String;
-    venueNameShort: Schema.Attribute.String;
-    weddingDate: Schema.Attribute.String;
-  };
-}
-
 export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
   collectionName: 'invitations';
   info: {
@@ -555,19 +482,25 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    allowPlusOne: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    code: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    confirmedGuestCount: Schema.Attribute.Integer &
+    code: Schema.Attribute.String & Schema.Attribute.Unique;
+    confirmedAdultCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    confirmedBabyCount: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    confirmedChildCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    guests: Schema.Attribute.Relation<'oneToMany', 'api::guest.guest'>;
+    guests: Schema.Attribute.Component<'rsvp.guest', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 10;
+        },
+        number
+      >;
     householdName: Schema.Attribute.String;
-    language: Schema.Attribute.Enumeration<['fr', 'en', 'it']> &
-      Schema.Attribute.DefaultTo<'fr'>;
+    inviteLink: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1230,8 +1163,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::footer.footer': ApiFooterFooter;
-      'api::guest.guest': ApiGuestGuest;
-      'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
       'api::invitation.invitation': ApiInvitationInvitation;
       'api::programme.programme': ApiProgrammeProgramme;
       'api::rsvp.rsvp': ApiRsvpRsvp;

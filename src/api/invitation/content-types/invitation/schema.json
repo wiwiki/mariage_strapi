@@ -14,11 +14,16 @@
   "attributes": {
     "code": {
       "type": "string",
-      "required": true,
       "unique": true
+    },
+    "inviteLink": {
+      "type": "string"
     },
     "householdName": {
       "type": "string"
+    },
+    "maxGuests": {
+      "type": "integer"
     },
     "rsvpStatus": {
       "type": "enumeration",
@@ -26,33 +31,29 @@
       "default": "pending",
       "required": true
     },
-    "confirmedGuestCount": {
-      "type": "integer",
-      "default": 0
-    },
     "respondedAt": {
       "type": "datetime"
-    },
-    "language": {
-      "type": "enumeration",
-      "enum": ["fr", "en", "it"],
-      "default": "fr"
-    },
-    "allowPlusOne": {
-      "type": "boolean",
-      "default": false
-    },
-    "maxGuests": {
-      "type": "integer"
     },
     "messageToCouple": {
       "type": "text"
     },
+    "confirmedAdultCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedChildCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "confirmedBabyCount": {
+      "type": "integer",
+      "default": 0
+    },
     "guests": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::guest.guest",
-      "mappedBy": "invitation"
+      "type": "component",
+      "repeatable": true,
+      "component": "rsvp.guest",
+      "max": 10
     }
   }
 }
