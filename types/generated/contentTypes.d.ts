@@ -482,9 +482,7 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    code: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    code: Schema.Attribute.String & Schema.Attribute.Unique;
     confirmedAdultCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     confirmedBabyCount: Schema.Attribute.Integer &
@@ -502,6 +500,7 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
         number
       >;
     householdName: Schema.Attribute.String;
+    inviteLink: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

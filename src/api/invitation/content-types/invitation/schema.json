@@ -14,8 +14,10 @@
   "attributes": {
     "code": {
       "type": "string",
-      "required": true,
       "unique": true
+    },
+    "inviteLink": {
+      "type": "string"
     },
     "householdName": {
       "type": "string"

@@ -1,6 +1,6 @@
 import type { Core } from '@strapi/strapi';
 
-const CODE_PATTERN = /^\d{6}$/;
+const CODE_PATTERN = /^[A-Z0-9]{6}$/;
 const MEAL_CHOICES = ['standard', 'vegetarian', 'vegan', 'allergie'];
 const AGE_GROUPS = ['adult', 'child', 'baby'];
 const MAX_GUESTS = 10;
@@ -8,12 +8,13 @@ const MAX_GUESTS = 10;
 const INVITATION_UID = 'api::invitation.invitation';
 
 function sanitizeInvitation(invitation: Record<string, unknown>) {
-  const { code, guests, ...rest } = invitation;
+  // inviteLink embeds the code, so it must stay private too.
+  const { code, inviteLink, guests, ...rest } = invitation;
   return rest;
 }
 
 async function findInvitationByCode(strapi: Core.Strapi, rawCode: unknown) {
-  const code = String(rawCode ?? '').trim();
+  const code = String(rawCode ?? '').trim().toUpperCase();
   if (!CODE_PATTERN.test(code)) return null;
 
   return strapi.documents(INVITATION_UID).findFirst({
