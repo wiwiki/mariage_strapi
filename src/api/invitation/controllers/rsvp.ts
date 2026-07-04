@@ -8,7 +8,6 @@ const MEAL_TYPES = [
   { value: 'standard', countField: 'confirmedStandardCount' },
   { value: 'vegetarian', countField: 'confirmedVegetarianCount' },
   { value: 'vegan', countField: 'confirmedVeganCount' },
-  { value: 'allergie', countField: 'confirmedAllergieCount' },
   { value: 'glutenFree', countField: 'confirmedGlutenFreeCount' },
 ] as const;
 const MEAL_CHOICES = MEAL_TYPES.map((meal) => meal.value);

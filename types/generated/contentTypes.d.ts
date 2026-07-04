@@ -485,8 +485,6 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     code: Schema.Attribute.String & Schema.Attribute.Unique;
     confirmedAdultCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
-    confirmedAllergieCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
     confirmedBabyCount: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     confirmedChildCount: Schema.Attribute.Integer &

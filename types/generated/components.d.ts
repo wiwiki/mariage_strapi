@@ -27,7 +27,7 @@ export interface RsvpGuest extends Struct.ComponentSchema {
     firstName: Schema.Attribute.String;
     lastName: Schema.Attribute.String;
     mealChoice: Schema.Attribute.Enumeration<
-      ['standard', 'vegetarian', 'vegan', 'allergie', 'glutenFree']
+      ['standard', 'vegetarian', 'vegan', 'glutenFree']
     >;
   };
 }

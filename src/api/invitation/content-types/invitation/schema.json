@@ -75,10 +75,6 @@
       "type": "integer",
       "default": 0
     },
-    "confirmedAllergieCount": {
-      "type": "integer",
-      "default": 0
-    },
     "confirmedGlutenFreeCount": {
       "type": "integer",
       "default": 0
