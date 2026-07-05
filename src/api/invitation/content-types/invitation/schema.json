@@ -51,31 +51,31 @@
     "inviteLink": {
       "type": "string"
     },
-    "adultCount": {
+    "countAdult": {
       "type": "integer",
       "default": 0
     },
-    "childCount": {
+    "countChild": {
       "type": "integer",
       "default": 0
     },
-    "babyCount": {
+    "countBaby": {
       "type": "integer",
       "default": 0
     },
-    "standardCount": {
+    "countStandard": {
       "type": "integer",
       "default": 0
     },
-    "vegetarianCount": {
+    "countVegetarian": {
       "type": "integer",
       "default": 0
     },
-    "veganCount": {
+    "countVegan": {
       "type": "integer",
       "default": 0
     },
-    "glutenFreeCount": {
+    "countGlutenFree": {
       "type": "integer",
       "default": 0
     }

@@ -5,10 +5,10 @@ const CODE_PATTERN = /^[A-Z0-9]{6}$/;
 // attending-count lands in. Keep in sync with the mealChoice enum in
 // src/components/rsvp/guest.json.
 const MEAL_TYPES = [
-  { value: 'standard', countField: 'standardCount' },
-  { value: 'vegetarian', countField: 'vegetarianCount' },
-  { value: 'vegan', countField: 'veganCount' },
-  { value: 'glutenFree', countField: 'glutenFreeCount' },
+  { value: 'standard', countField: 'countStandard' },
+  { value: 'vegetarian', countField: 'countVegetarian' },
+  { value: 'vegan', countField: 'countVegan' },
+  { value: 'glutenFree', countField: 'countGlutenFree' },
 ] as const;
 const MEAL_CHOICES = MEAL_TYPES.map((meal) => meal.value);
 const AGE_GROUPS = ['adult', 'child', 'baby'];
@@ -95,9 +95,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       data: {
         guests,
         rsvpStatus: attendees.length > 0 ? 'confirmed' : 'declined',
-        adultCount: attendees.filter((guest) => guest.ageGroup === 'adult').length,
-        childCount: attendees.filter((guest) => guest.ageGroup === 'child').length,
-        babyCount: attendees.filter((guest) => guest.ageGroup === 'baby').length,
+        countAdult: attendees.filter((guest) => guest.ageGroup === 'adult').length,
+        countChild: attendees.filter((guest) => guest.ageGroup === 'child').length,
+        countBaby: attendees.filter((guest) => guest.ageGroup === 'baby').length,
         ...mealCounts,
         respondedAt: new Date().toISOString(),
         ...(messageToCouple !== undefined ? { messageToCouple } : {}),

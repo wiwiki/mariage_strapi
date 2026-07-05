@@ -482,15 +482,18 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    adultCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    babyCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    childCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     code: Schema.Attribute.String & Schema.Attribute.Unique;
     contactEmail: Schema.Attribute.Email & Schema.Attribute.Private;
+    countAdult: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countBaby: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countChild: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countGlutenFree: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countStandard: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countVegan: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    countVegetarian: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    glutenFreeCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     guests: Schema.Attribute.Component<'rsvp.guest', true> &
       Schema.Attribute.SetMinMax<
         {
@@ -515,12 +518,9 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'pending'>;
-    standardCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    veganCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    vegetarianCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
   };
 }
 
