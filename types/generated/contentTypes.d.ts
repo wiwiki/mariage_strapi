@@ -603,6 +603,7 @@ export interface ApiStoryStory extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::story.story'> &
       Schema.Attribute.Private;
+    pictureCouple: Schema.Attribute.Media<'images', true>;
     publishedAt: Schema.Attribute.DateTime;
     storyEyebrow: Schema.Attribute.String;
     storyLede: Schema.Attribute.Text;
