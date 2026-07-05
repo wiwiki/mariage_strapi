@@ -4,7 +4,7 @@ import type { Core } from '@strapi/strapi';
 // public and a custom controller skips Strapi's sanitization, so wildcard
 // populate would leak private relations like createdBy/updatedBy.
 const SECTIONS: { uid: string; populate?: Record<string, true> }[] = [
-  { uid: 'api::story.story' },
+  { uid: 'api::story.story', populate: { pictureCouple: true } },
   { uid: 'api::programme.programme', populate: { programmeItems: true } },
   { uid: 'api::venue.venue', populate: { venuePhoto: true } },
   { uid: 'api::rsvp.rsvp' },

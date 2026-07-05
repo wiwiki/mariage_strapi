@@ -20,6 +20,13 @@
     },
     "storyLede": {
       "type": "text"
+    },
+    "pictureCouple": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
