@@ -482,25 +482,15 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    adultCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    babyCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    childCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     code: Schema.Attribute.String & Schema.Attribute.Unique;
-    confirmedAdultCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedBabyCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedChildCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedGlutenFreeCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedStandardCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedVeganCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
-    confirmedVegetarianCount: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<0>;
     contactEmail: Schema.Attribute.Email & Schema.Attribute.Private;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    glutenFreeCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     guests: Schema.Attribute.Component<'rsvp.guest', true> &
       Schema.Attribute.SetMinMax<
         {
@@ -525,9 +515,12 @@ export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'pending'>;
+    standardCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    veganCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    vegetarianCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
   };
 }
 
