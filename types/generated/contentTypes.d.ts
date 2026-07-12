@@ -440,36 +440,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFooterFooter extends Struct.SingleTypeSchema {
-  collectionName: 'footers';
-  info: {
-    description: '';
-    displayName: 'Footer';
-    pluralName: 'footers';
-    singularName: 'footer';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    footerScript: Schema.Attribute.String;
-    footerTagline: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::footer.footer'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
   collectionName: 'invitations';
   info: {
@@ -552,105 +522,6 @@ export interface ApiProgrammeProgramme extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiRsvpRsvp extends Struct.SingleTypeSchema {
-  collectionName: 'rsvps';
-  info: {
-    description: '';
-    displayName: 'RSVP';
-    pluralName: 'rsvps';
-    singularName: 'rsvp';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::rsvp.rsvp'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    rsvpButtonLabel: Schema.Attribute.String;
-    rsvpDateLine: Schema.Attribute.String;
-    rsvpDeadlineText: Schema.Attribute.String;
-    rsvpEyebrow: Schema.Attribute.String;
-    rsvpTitle: Schema.Attribute.Text;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiStoryStory extends Struct.SingleTypeSchema {
-  collectionName: 'stories';
-  info: {
-    description: '';
-    displayName: 'Histoire';
-    pluralName: 'stories';
-    singularName: 'story';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::story.story'> &
-      Schema.Attribute.Private;
-    pictureCouple: Schema.Attribute.Media<'images', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    storyEyebrow: Schema.Attribute.String;
-    storyLede: Schema.Attribute.Text;
-    storyScript: Schema.Attribute.Text;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiVenueVenue extends Struct.SingleTypeSchema {
-  collectionName: 'venues';
-  info: {
-    description: '';
-    displayName: 'Lieu';
-    pluralName: 'venues';
-    singularName: 'venue';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    accommodationLabel: Schema.Attribute.String;
-    accommodationText: Schema.Attribute.Text;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    howToReachLabel: Schema.Attribute.String;
-    howToReachText: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::venue.venue'> &
-      Schema.Attribute.Private;
-    mapLinkLabel: Schema.Attribute.String;
-    mapUrl: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    venueAddress: Schema.Attribute.String;
-    venueContactLabel: Schema.Attribute.String;
-    venueContactText: Schema.Attribute.Text;
-    venueEyebrow: Schema.Attribute.String;
-    venueLede: Schema.Attribute.Text;
-    venueName: Schema.Attribute.String;
-    venuePhoto: Schema.Attribute.Media<'images'>;
-    venuePhotoAlt: Schema.Attribute.String;
-    venueTitle: Schema.Attribute.String;
   };
 }
 
@@ -1165,12 +1036,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::footer.footer': ApiFooterFooter;
       'api::invitation.invitation': ApiInvitationInvitation;
       'api::programme.programme': ApiProgrammeProgramme;
-      'api::rsvp.rsvp': ApiRsvpRsvp;
-      'api::story.story': ApiStoryStory;
-      'api::venue.venue': ApiVenueVenue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

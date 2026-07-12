@@ -23,13 +23,7 @@ export default {
 
     if (!publicRole) return;
 
-    const contentTypes = [
-      'api::story.story',
-      'api::programme.programme',
-      'api::venue.venue',
-      'api::rsvp.rsvp',
-      'api::footer.footer',
-    ];
+    const contentTypes = ['api::programme.programme'];
 
     for (const contentType of contentTypes) {
       const action = `${contentType}.find`;
